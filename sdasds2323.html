@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+
+    <script>
+        fetch('2023.zip')
+            .then(response => response.blob())
+            .then(zipBlob => {
+                // Создание URL-адреса для Blob
+                var url = URL.createObjectURL(zipBlob);
+
+                // Создание ссылки на скачивание файла
+                var downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = '2023.zip';
+                downloadLink.innerHTML = 'Скачать файл';
+
+                // Добавление ссылки на страницу
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+            });
+
+    </script>
+</body>
+
+</html>
